@@ -2931,7 +2931,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -794, y: 470}
+  m_AnchoredPosition: {x: -792, y: 468}
   m_SizeDelta: {x: 215, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &672252373
@@ -3258,7 +3258,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &693374494
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3271,13 +3271,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1451565579}
-  m_RootOrder: 1
+  m_Father: {fileID: 1122910651}
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 40.983, y: 218.09}
-  m_SizeDelta: {x: 200, y: 40.4799}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 75, y: -473}
+  m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &693374495
 MonoBehaviour:
@@ -5125,8 +5125,9 @@ RectTransform:
   - {fileID: 1316525750}
   - {fileID: 1589525268}
   - {fileID: 1581249379}
+  - {fileID: 693374494}
   m_Father: {fileID: 1451565579}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6365,7 +6366,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 672252372}
-  - {fileID: 693374494}
   - {fileID: 1122910651}
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -29011,14 +29011,14 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: -0.000009536707
-      outSlope: -0.000009536707
+      inSlope: -0.000001525878
+      outSlope: -0.000001525878
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.80000305
+      time: 5.000003
       value: 0.9999924
       inSlope: -0.00052758446
       outSlope: -0.00052758446
@@ -29027,8 +29027,8 @@ MonoBehaviour:
       inWeight: 0.27323365
       outWeight: 0.070880264
     - serializedVersion: 3
-      time: 2
-      value: -0.0023498535
+      time: 7
+      value: 0
       inSlope: 0.00050575327
       outSlope: 0.00050575327
       tangentMode: 0
@@ -29036,7 +29036,7 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.08378421
     - serializedVersion: 3
-      time: 20
+      time: 18
       value: 0
       inSlope: 0.00064149016
       outSlope: 0.00064149016
@@ -29045,8 +29045,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.100115575
     - serializedVersion: 3
-      time: 23
-      value: 1
+      time: 20
+      value: 0.9999992
       inSlope: 0.0013733876
       outSlope: 0.0013733876
       tangentMode: 0
@@ -29056,8 +29056,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 24
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: 0.0000001937151
+      outSlope: 0.0000001937151
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -29066,8 +29066,8 @@ MonoBehaviour:
     m_PostInfinity: 0
     m_RotationOrder: 4
   dayLightColor: {r: 1, g: 1, b: 1, a: 1}
-  timeScale: 1200
-  startAtTime: 28800
+  timeScale: 144
+  startAtTime: 21600
   text: {fileID: 672252373}
   globalLight: {fileID: 312222290}
 --- !u!224 &1862055736 stripped
