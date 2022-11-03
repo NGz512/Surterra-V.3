@@ -14,7 +14,6 @@ public class ToolsCharacterController : MonoBehaviour
     [SerializeField] MarkerManager markerManager;
     [SerializeField] TileMapReadController tileMapReadController;
     [SerializeField] float maxDistance = 1.5f;
-    [SerializeField] CropsManager cropsManager;
     [SerializeField] TileData plowableTiles;
 
     Vector3Int selectedTilePosition;
@@ -70,6 +69,14 @@ public class ToolsCharacterController : MonoBehaviour
 
         bool complete = item.onAction.OnApply(position);
 
+        if (complete == true)
+        {
+            if (item.onItemUsed != null)
+            {
+                item.onItemUsed.OnItemUsed(item, GameManager.instance.inventoryContainer);
+            }
+        }
+
         return complete;
     }
 
@@ -77,17 +84,19 @@ public class ToolsCharacterController : MonoBehaviour
     {
         if(selectable == true)
         {
-            TileBase tileBase = tileMapReadController.GetTileBase(selectedTilePosition);
-            TileData tileData = tileMapReadController.GetTileData(tileBase);
-            if(tileData != plowableTiles) { return; }
+            Item item = toolbarController.GetItem;
+            if (item == null) { return; }
+            if (item.onTileMapAction == null) { return; }
 
-            if (cropsManager.Check(selectedTilePosition))
+
+            bool complete = item.onTileMapAction.OnApplyToTileMap(selectedTilePosition, tileMapReadController);
+
+            if(complete == true)
             {
-                cropsManager.Seed(selectedTilePosition);
-            }
-            else
-            {
-                cropsManager.Plow(selectedTilePosition);
+                if(item.onItemUsed != null)
+                {
+                    item.onItemUsed.OnItemUsed(item, GameManager.instance.inventoryContainer);
+                }
             }
         }
     }
