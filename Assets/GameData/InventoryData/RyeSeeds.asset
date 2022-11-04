@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 452f62e3b830f634695c0da941985ec1, type: 3}
   m_Name: RyeSeeds
   m_EditorClassIdentifier: 
-  Name: CarrotSeeds
+  Name: RyeSeeds
   stackable: 1
   icon: {fileID: 21300000, guid: 9d61293bbaa065d40833c207e3c61c6a, type: 3}
   onAction: {fileID: 0}

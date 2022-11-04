@@ -45,10 +45,11 @@ public class CropsManager : TimeAgent
         foreach(CropTile cropTile in crops.Values)
         {
             if(cropTile.crop == null) { continue; }
+            if (cropTile.growStage >= cropTile.crop.growthStageTime.Count) { continue; }//coutinue คือ ขึ้นลูปใหม่(ก้อง)
 
             cropTile.growTimer += 1;
 
-            if(cropTile.growTimer >= cropTile.crop.growthStageTime[cropTile.growStage])
+            if (cropTile.growTimer >= cropTile.crop.growthStageTime[cropTile.growStage])//[Pointer]
             {
                 cropTile.renderer.gameObject.SetActive(true);
                 cropTile.renderer.sprite = cropTile.crop.sprites[cropTile.growStage];
