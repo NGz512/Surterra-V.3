@@ -11,6 +11,23 @@ public class CropTile
     public CropGrowing crop;
     public SpriteRenderer renderer;
 
+    public bool Complete
+    {
+        get
+        {
+            if(crop == null) { return false; }
+            return growTimer >= crop.timeToGrow;
+        }
+    }
+
+    internal void Harvested()
+    {
+        growTimer = 0;
+        growStage = 0;
+        crop = null;
+        renderer.gameObject.SetActive(false);
+    }
+
     private int age;
     public CropTile(int age)
     {
@@ -28,6 +45,7 @@ public class CropsManager : TimeAgent
     
     [SerializeField] TileBase plowed;
     [SerializeField] TileBase seeded;
+
     [SerializeField] Tilemap targetTilemap;
     [SerializeField] GameObject cropsSpriteprefab;
 
@@ -46,6 +64,12 @@ public class CropsManager : TimeAgent
         {
             if(cropTile.crop == null) { continue; }
             if (cropTile.growStage >= cropTile.crop.growthStageTime.Count) { continue; }//coutinue คือ ขึ้นลูปใหม่(ก้อง)
+            
+            if (cropTile.Complete)
+            {
+                Debug.Log("Finally Plant Growing");
+                continue;
+            }
 
             cropTile.growTimer += 1;
 
@@ -57,11 +81,7 @@ public class CropsManager : TimeAgent
                 cropTile.growStage += 1;
             }
 
-            if(cropTile.growTimer >= cropTile.crop.timeToGrow)
-            {
-                Debug.Log("Finally Plant Growing");
-                cropTile.crop = null;
-            }
+     
         }
     }
 
@@ -104,5 +124,24 @@ public class CropsManager : TimeAgent
         }
 
         targetTilemap.SetTile(position, plowed);
+    }
+
+    internal void PickUp(Vector3Int gridposition)
+    {
+        Vector2Int position = (Vector2Int)gridposition;
+        if(crops.ContainsKey(position) == false) { return; }
+
+        CropTile cropTile = crops[position];
+
+        if (cropTile.Complete)
+        {
+            ItemSpawnManager.instance.SpawnItem(
+                targetTilemap.CellToWorld(gridposition),
+                cropTile.crop.yield,
+                cropTile.crop.count
+                );
+
+            cropTile.Harvested();
+        }
     }
 }
